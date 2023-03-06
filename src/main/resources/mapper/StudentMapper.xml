@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--核心配置文件-->
+<mapper namespace="org.java.dao.StudentMapper">
+    <resultMap id="StudentMap" type="org.java.entity.Student">
+        <result column="stu_id" property="stuId"/>
+        <result column="stu_name" property="stuName"/>
+        <result column="stu_gender" property="stuGender"/>
+        <result column="stu_birth" property="stuBirth"/>
+        <result column="stu_class" property="stuClass"/>
+        <result column="stu_score" property="stuScore"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="StudentMap">
+        select stu_id,stu_name,stu_gender,stu_birth,stu_class,stu_score
+        from student
+    </select>
+
+    <insert id="addStudent" parameterType="student">
+        insert into student values (#{stuId},#{stuName},#{stuGender},#{stuBirth},#{stuClass},#{stuScore})
+    </insert>
+</mapper>
